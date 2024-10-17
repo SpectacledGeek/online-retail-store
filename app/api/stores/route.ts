@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
+    console.log("cfghjc");
     const { userId } = auth();
     const body = await req.json();
     const { name } = body;
@@ -22,8 +23,9 @@ export async function POST(req: Request) {
         userId,
       },
     });
+    return NextResponse.json(store);
   } catch (error) {
     console.log("[STORES_POST]", error);
-    return new NextResponse("Internal Error", { status: 500 });
+    return new NextResponse("Internal Error here", { status: 500 });
   }
 }
