@@ -3,6 +3,15 @@ import prismadb from "@/lib/prismadb";
 import { CategoryClient } from "./components/client";
 import { CategoryColumn } from "./components/columns";
 
+type CategoryWithBillboard = {
+  id: string;
+  name: string;
+  createdAt: Date;
+  billboard: {
+    label: string;
+  };
+};
+
 const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
   const categories = await prismadb.category.findMany({
     where: {
@@ -16,12 +25,14 @@ const CategoriesPage = async ({ params }: { params: { storeId: string } }) => {
     },
   });
 
-  const formattedCategories: CategoryColumn[] = categories.map((item) => ({
-    id: item.id,
-    name: item.name,
-    billboardLabel: item.billboard.label,
-    createdAt: format(item.createdAt, "MMMM do, yyyy"),
-  }));
+  const formattedCategories: CategoryColumn[] = categories.map(
+    (item: CategoryWithBillboard) => ({
+      id: item.id,
+      name: item.name,
+      billboardLabel: item.billboard.label,
+      createdAt: format(item.createdAt, "MMMM do, yyyy"),
+    })
+  );
 
   return (
     <div className="flex-col">
