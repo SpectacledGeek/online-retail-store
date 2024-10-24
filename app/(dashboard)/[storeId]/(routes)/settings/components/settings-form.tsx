@@ -56,6 +56,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       toast.success("Store Updated");
     } catch (error) {
       toast.error("Something went Wrong");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -70,6 +71,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       toast.success("Store Deleted");
     } catch (error) {
       toast.error("Make sure you removed all products and category first");
+      console.log(error);
     } finally {
       setLoading(false);
       setOpen(false);

@@ -81,6 +81,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went Wrong");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -99,6 +100,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       toast.error(
         "Make sure you removed all products using this category first"
       );
+      console.log(error);
     } finally {
       setLoading(false);
       setOpen(false);

@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
-import { BillboardCollumn } from "./columns";
+import { ProductColumn } from "./columns";
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
@@ -18,7 +18,7 @@ import axios from "axios";
 import { AlertModal } from "@/components/modals/alert-modal";
 
 interface CellActionProps {
-  data: BillboardCollumn;
+  data: ProductColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -42,6 +42,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       toast.error(
         "Make sure you removed all category using this billboard first"
       );
+      console.log(error);
     } finally {
       setLoading(false);
       setOpen(false);

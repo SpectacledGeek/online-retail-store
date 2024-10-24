@@ -109,6 +109,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went Wrong");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -117,16 +118,13 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(
-        `/api/${params.storeId}/products/${params.productId}`
-      );
+      await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
       router.refresh();
       router.push(`/${params.storeId}/products`);
       toast.success("Product Deleted");
     } catch (error) {
-      toast.error(
-        "Something went wrong"
-      );
+      toast.error("Something went wrong");
+      console.log(error);
     } finally {
       setLoading(false);
       setOpen(false);
@@ -323,9 +321,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel>
-                      Featured
-                    </FormLabel>
+                    <FormLabel>Featured</FormLabel>
                     <FormDescription>
                       This product will appear on the home page
                     </FormDescription>

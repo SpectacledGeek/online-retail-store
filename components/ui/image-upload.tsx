@@ -1,6 +1,6 @@
 "use client";
 
-import { CloudUpload, ImagePlus, Trash } from "lucide-react";
+import { ImagePlus, Trash } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";

@@ -42,6 +42,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       toast.error(
         "Make sure you removed all category using this billboard first"
       );
+      console.log(error);
     } finally {
       setLoading(false);
       setOpen(false);

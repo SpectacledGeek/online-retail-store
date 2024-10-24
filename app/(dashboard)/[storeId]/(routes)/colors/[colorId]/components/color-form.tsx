@@ -23,7 +23,6 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
-import ImageUpload from "@/components/ui/image-upload";
 
 interface ColorFormProps {
   initialData: Color | null;
@@ -73,6 +72,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went Wrong");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -87,6 +87,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       toast.success("Size Deleted");
     } catch (error) {
       toast.error("Make sure you removed all Products using this Color first");
+      console.log(error);
     } finally {
       setLoading(false);
       setOpen(false);

@@ -23,7 +23,6 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
 interface BillboardFormProps {
@@ -74,6 +73,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       toast.success(toastMessage);
     } catch (error) {
       toast.error("Something went Wrong");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -92,6 +92,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       toast.error(
         "Make sure you removed all category using this billboard first"
       );
+      console.log(error);
     } finally {
       setLoading(false);
       setOpen(false);
