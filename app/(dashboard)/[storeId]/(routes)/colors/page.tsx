@@ -3,6 +3,13 @@ import prismadb from "@/lib/prismadb";
 import { ColorsClient } from "./components/client";
 import { ColorColumn } from "./components/columns";
 
+type ColorType = {
+  id: string;
+  name: string;
+  value: string;
+  createdAt: Date;
+};
+
 const ColorsPage = async ({ params }: { params: { storeId: string } }) => {
   const colors = await prismadb.color.findMany({
     where: {
@@ -13,7 +20,7 @@ const ColorsPage = async ({ params }: { params: { storeId: string } }) => {
     },
   });
 
-  const formattedColors: ColorColumn[] = colors.map((item) => ({
+  const formattedColors: ColorColumn[] = colors.map((item: ColorType) => ({
     id: item.id,
     name: item.name,
     value: item.value,
